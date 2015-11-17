@@ -6,7 +6,6 @@ from .forms import LoginForm
 @app.route('/')
 @app.route('/index')
 def index():
-     return "Hello World!"
      user = {'nickname': 'Miguel'} # fake user
      posts= [ # fake array of posts
             {
@@ -18,6 +17,11 @@ def index():
                 'body': 'The Avenges movie was so cool!'
             }
         ]
+     return render_template("index.html",
+                                title='Home',
+                                user=user,
+                                posts=posts)
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -25,9 +29,7 @@ def login():
         flash('Login requested for OpenID="%s", remember-me=%s' %
                 (form.openid,data, str(form.remember_,me.data)))
         return redirect('/index')
-    return render_template( 'index.html',
-                            'login.html',
-                            title='Sign In',
-                            user=user,
-                            posts=posts,
-                            form=form)
+    return render_template('login.html',
+                           title='Sign In',
+                           form=form,
+                           providers=app.config['OPENID_PROVIDERS'])
