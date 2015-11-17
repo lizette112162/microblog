@@ -1,8 +1,12 @@
 {% extends "base.html" %}
+
+{% block title %}
+<title>Home</title>
+{% endblock %}
 {% block content %}
           <h1>Hi, {{ user.nickname }}!</h1>
           {% for post in posts %}
           <div><p>{{post.author.nickname }} says: <b>{{ post.body }}</b></p></div>
           {% endfor %}
 {% endblock %}
-</html>
+
