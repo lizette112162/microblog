@@ -33,7 +33,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         flash('Login requested for OpenID="%s", remember-me=%s' %
-                (form.openid,data, str(form.remember_,me.data)))
+                (form.openid.data, str(form.remember_me.data)))
         session['remember_me'] = form.remember_me.data
         return old.try_login(form.openid.data, ask_for=['nickname', 'email'])
     return render_template('login.html',
