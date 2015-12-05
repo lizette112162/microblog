@@ -1,6 +1,9 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+WTF_CSRF_ENABLED = True
+SECRET_KEY = 'you-will-never-guess'
+
 OPENID_PROVIDERS = [
         {'name': 'Google', 'url': 'https://www.google.com/accounts/o8/id'},
         {'name': 'Yahoo', 'url': 'https://me.yahoo.com'},
@@ -13,16 +16,12 @@ SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 WHOOSH_BASE = os.path.join(basedir, 'search.db')
 
 # email server
-MAIL_SERVER = 'smtp.mail.yahoo.com'
-#MAIL_SERVER = 'localhost'
-MAIL_PORT =  465
-MAIL_USE_TLS = False
-MAIL_USE_SSL = True
-MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-
+MAIL_SERVER = 'localhost'
+MAIL_PORT =  25
+MAIL_USERNAME = None
+MAIL_PASSWORD = None
 # administrator list
-ADMINS = ['ritamutyaba@yahoo.com']
+ADMINS = ['you@example.com']
 
 # pagination
 POSTS_PER_PAGE = 3

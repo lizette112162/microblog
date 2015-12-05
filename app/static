@@ -1,0 +1,10 @@
+/app
+    /static
+        /css
+            bootstrap.min.css
+            bootstrap-responsive.min.css
+        /img
+            glyphicons-halflings.png
+            glyphicons-halflings-white.png
+        /js
+            bootstrap.min.js
