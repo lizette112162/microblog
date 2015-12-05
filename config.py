@@ -27,3 +27,10 @@ ADMINS = ['you@example.com']
 POSTS_PER_PAGE = 3
 MAX_SEARCH_RESULTS = 50
 
+# -*- coding: utf-8 -*-
+# ...
+# available languages
+LANGUAGES = {
+        'en': 'English',
+        'es': 'Español'
+
