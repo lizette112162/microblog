@@ -1,7 +1,7 @@
 from hashlib import md5
 from app import db
 from app import app
-
+import re
 import sys
 if sys.version_info >= (3, 0):
     enable_search = False
@@ -43,7 +43,9 @@ class User(db.Model):
                                 primaryjoin=(followers.c.follower_id == id),
                                 secondaryjoin=(followers.c.followed_id == id),
                                 backref= db.backref('followers', lazy='dynamic'), lazy='dynamic')
-
+    @ staticmethod
+    def make_valid_nickname(nickname):
+        return re.sub('[^a-zA-Z0-9_\.]', '', nickname)
     @staticmethod
     def make_unique_nickname(nickname):
         if User.query.filter_by(nickname=nickname).first() is None:
