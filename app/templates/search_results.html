@@ -3,6 +3,7 @@
 
 {% block content %}
 <h1>{{ _('Search results for "%(query)s":', query = query) }}</h1>
+{% include 'flash.html' %}
     {% for post in posts %}
         {% include 'post.html' %}
     {% endfor %}

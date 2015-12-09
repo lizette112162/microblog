@@ -2,11 +2,12 @@ from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from datetime import datetime
 from app import app, db, lm, oid, babel
-from forms import LoginForm, EditForm, PostForm
-from forms import SearchForm
+from forms import LoginForm, EditForm, PostForm, SearchForm
 from models import User, Post
 from .emails import follower_notification
-from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES
+from guess_language import guessLanguage
+from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS
+from config import LANGUAGES
 # ...
 
 # index view function suppressed for brevity
@@ -35,7 +36,13 @@ def before_request():
 def index(page=1):
      form = PostForm()
      if form.validate_on_submit():
-         post = Post(body=form.post.data, timestamp=datetime.utcnow(), author=g.user)
+         language = guessLanguage(form.post.data)
+         if language == 'UNKNOWN' or len(language) > 5:
+             language = ''
+         post = Post(body=form.post.data,
+                    timestamp=datetime.utcnow(),
+                    author=g.user,
+                    language=language)
          db.session.add(post)
          db.session.commit()
          flash(gettext('Your post is now live!'))
@@ -53,8 +60,6 @@ def login():
         return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
-        flash('Login requested for OpenID="%s", remember-me=%s' %
-                (form.openid.data, str(form.remember_me.data)))
         session['remember_me'] = form.remember_me.data
         return oid.try_login(form.openid.data, ask_for=['nickname', 'email'])
     return render_template('login.html',
@@ -98,7 +103,7 @@ def logout():
 def user(nickname, page=1):
     user = User.query.filter_by(nickname=nickname).first()
     if user is None:
-        flash('User %s not found.' % nickname)
+        flash(gettext('User %(nickname)s not found.', nickname=nickname))
         return redirect(url_for('index'))
     posts = user.posts.paginate(page, POSTS_PER_PAGE, False)
     return render_template('user.html',
@@ -117,9 +122,9 @@ def edit():
         db.session.commit()
         flash(gettext('Your changes have been saved.'))
         return redirect(url_for('edit'))
-    else:
+    elif request.method != "POST":
         form.nickname.data = g.user.nickname
-        form.about_me.data =g.user.about_me
+        form.about_me.data = g.user.about_me
     return render_template('edit.html', form=form)
 
 @app.route('/follow/<nickname>')
@@ -128,14 +133,14 @@ def follow(nickname):
     user = User.query.filter_by(nickname=nickname).first()
     if user is None:
         flash(gettext('User %s not found.' % nickname))
-        return redirect(url_for('user', nickname=nickname))
+        return redirect(url_for('index'))
     u = g.user.follow(user)
     if u is None:
-        flash(gettext('Cannot follow '+ nickname + '.'))
+        flash(gettext('Cannot follow %(nickname)s.', nickname=nickname))
         return redirect(url_for('user', nickname=nickname))
     db.session.add(u)
     db.session.commit()
-    flash(gettext('You are now following ' + nickname +  '!'))
+    flash(gettext('You are now following %(nickname)s!', nickname=nickname))
     follower_notification(user, g.user)
     return redirect(url_for('user', nickname=nickname))
 
@@ -151,11 +156,11 @@ def unfollow(nickname):
         return redirect(url_for('user', nickname=nickname))
     u = g.user.unfollow(user)
     if u is None:
-        flash(gettext('Cannot unfollow ' + nickname + '.'))
+        flash(gettext('Cannot unfollow %(nickname)s.', nickname=nickname))
         return redirect(url_for('user', nickname=nickname))
     db.session.add(u)
     db.session.commit()
-    flash(gettext('You have stopped following ' + nickname + '.'))
+    flash(gettext('You have stopped following %(nickname)s.', nickname=nickname))
     return redirect(url_for('user', nickname=nickname))
 
 @app.route('/search', methods=['POST'])
