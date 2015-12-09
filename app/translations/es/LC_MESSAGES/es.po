@@ -1,89 +1,86 @@
-# Translations template for PROJECT.
+# Spanish translations for PROJECT.
 # Copyright (C) 2015 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-12-09 14:12-0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2015-12-08 22:27-0800\n"
+"PO-Revision-Date: 2015-12-09 13:50-0800\n"
+"Language-Team: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.1.1\n"
+"X-Generator: Poedit 1.8.6\n"
+"Last-Translator: \n"
+"Language: es\n"
 
 #: app/forms.py:23
 msgid ""
-"This nickname has invalid characters. Please use letters, numbers, dots "
-"and underscores only."
+"This nickname has invalid characters. Please use letters, numbers, dots and "
+"underscores only."
 msgstr ""
+"Este apodo tiene caracteres no válidos. Por favor use letras, números, "
+"puntos y guiones bajos solamente."
 
 #: app/forms.py:27
 msgid "This nickname is already in use. Please choose another one"
-msgstr ""
+msgstr "El apodo ya está en uso. Elija otro"
 
-#: app/translate.py:15
-msgid "Error:translation service not configured."
-msgstr ""
-
-#: app/translate.py:39
-msgid "Error: Unexpected error."
-msgstr ""
-
-#: app/views.py:48
+#: app/views.py:41
 msgid "Your post is now live!"
-msgstr ""
+msgstr "Tu entrada está ahora en vivo!"
 
-#: app/views.py:72
+#: app/views.py:65
 msgid "Invalid login. Please try again."
-msgstr ""
+msgstr "Inicio de sesión no válido. Por favor, inténtelo de nuevo."
 
-#: app/views.py:106
+#: app/views.py:99
 #, python-format
 msgid "User %(nickname)s not found."
-msgstr ""
+msgstr "No se encontraron %s"
 
-#: app/views.py:123
+#: app/views.py:116
 msgid "Your changes have been saved."
-msgstr ""
+msgstr "Los cambios han sido guardados."
 
-#: app/views.py:135
+#: app/views.py:128
 #, python-format
 msgid "User %s not found."
-msgstr ""
+msgstr "No se encontraron %s"
 
-#: app/views.py:139
+#: app/views.py:132
 #, python-format
 msgid "Cannot follow %(nickname)s."
-msgstr ""
+msgstr "No puede seguir."
 
-#: app/views.py:143
+#: app/views.py:136
 #, python-format
 msgid "You are now following %(nickname)s!"
-msgstr ""
+msgstr "Ahora estás siguiendo a %s."
 
-#: app/views.py:155
+#: app/views.py:148
 msgid "You can't unfollow yourself!"
-msgstr ""
+msgstr "No se puede dejar de seguir a ti mismo!"
 
-#: app/views.py:159
+#: app/views.py:152
 #, python-format
 msgid "Cannot unfollow %(nickname)s."
-msgstr ""
+msgstr "No puede seguir."
 
-#: app/views.py:163
+#: app/views.py:156
 #, python-format
 msgid "You have stopped following %(nickname)s."
-msgstr ""
+msgstr "Ahora estás siguiendo a %s."
 
 #: app/templates/404.html:5
+#, python-format
 msgid "File Not Found"
-msgstr ""
+msgstr "No se encontraron %s"
 
 #: app/templates/500.html:5
 msgid "An unexpected error has occured"
@@ -99,7 +96,7 @@ msgstr ""
 
 #: app/templates/base.html:35
 msgid "Your Profile"
-msgstr ""
+msgstr "Tu entrada está ahora en vivo!"
 
 #: app/templates/base.html:36
 msgid "Logout"
@@ -125,7 +122,7 @@ msgstr ""
 #: app/templates/index.html:7
 #, python-format
 msgid "Hi, %(nickname)s!"
-msgstr ""
+msgstr "No se encontraron %s"
 
 #: app/templates/index.html:13
 msgid "Say something:"
@@ -133,7 +130,7 @@ msgstr ""
 
 #: app/templates/index.html:23
 msgid "Post!"
-msgstr ""
+msgstr "Tu entrada está ahora en vivo!"
 
 #: app/templates/index.html:33 app/templates/index.html:35
 #: app/templates/user.html:31
@@ -151,7 +148,7 @@ msgstr ""
 
 #: app/templates/login.html:21
 msgid "Please Sign In"
-msgstr ""
+msgstr "Inicia sesión para acceder a esta página."
 
 #: app/templates/login.html:24
 msgid "Click on your OpenID provider below:"
@@ -174,10 +171,6 @@ msgstr ""
 msgid "%(nickname)s said %(when)s:"
 msgstr ""
 
-#: app/templates/post.html:10
-msgid "Translate"
-msgstr ""
-
 #: app/templates/search_results.html:5
 #, python-format
 msgid "Search results for \"%(query)s\":"
@@ -193,21 +186,20 @@ msgstr ""
 
 #: app/templates/user.html:15
 msgid "Following:"
-msgstr ""
+msgstr "Ahora estás siguiendo a %s."
 
 #: app/templates/user.html:17
 msgid "Edit your profile"
-msgstr ""
+msgstr "Los cambios han sido guardados."
 
 #: app/templates/user.html:19
 msgid "Follow"
-msgstr ""
+msgstr "No puede seguir."
 
 #: app/templates/user.html:21
 msgid "Unfollow"
-msgstr ""
+msgstr "No se puede dejar de seguir a ti mismo!"
 
 #: app/templates/user.html:33
 msgid " Newer posts"
 msgstr ""
-
