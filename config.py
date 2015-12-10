@@ -3,9 +3,6 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 # microsft translation service
 
-MS_TRANSLATOR_CLIENT_ ID ='micro-blog'
-MS_TRANSLATOR_CLIENT_ SECRET = 'bbvcxLR5IbDalpmivYE8OQ6PR/uo4Bi8XATpp7AnER8='
-
 WTF_CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
 
@@ -40,3 +37,7 @@ LANGUAGES = {
         'en': 'English',
         'es': 'Espanol'
  }
+
+MS_TRANSLATOR_CLIENT_ID = 'micro-blog'
+MS_TRANSLATOR_CLIENT_SECRET = 'bbvcxLR5IbDalpmivYE8OQ6PR/uo4Bi8XATpp7AnER8='
+
