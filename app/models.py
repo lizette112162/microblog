@@ -3,6 +3,7 @@ from app import db
 from app import app
 import re
 import sys
+
 if sys.version_info >= (3, 0):
     enable_search = False
 else:

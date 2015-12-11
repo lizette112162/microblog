@@ -28,7 +28,7 @@ def translate():
 
 @babel.localeselector
 def get_locale():
-    return 'es' # request.accept_languages.best_match(LANGUAGES.keys())
+    return 'en' # request.accept_languages.best_match(LANGUAGES.keys())
 
 @app.before_request
 def before_request():
@@ -58,7 +58,7 @@ def index(page=1):
          db.session.commit()
          flash(gettext('Your post is now live!'))
          return redirect(url_for('index'))
-     posts= g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)
+     posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)
      return render_template('index.html',
                             title='Home',
                             form=form,
@@ -188,6 +188,21 @@ def search_results(query):
     return render_template('search_results.html',
                             query=query,
                             results=results)
+
+@app.route('/delete/<int:id>')
+@login_required
+def delete(id):
+    post = Post.query.get(id)
+    if post is None:
+        flash('Post not found.')
+        return redirect(url_for('index'))
+    if post.author.id != g.user.id:
+        flash('You cannot delete this post.')
+        return redirect(url_for('index'))
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your post has been deleted.')
+    return redirect(url_for('index'))
 
 @app.errorhandler(404)
 def not_found_error(error):

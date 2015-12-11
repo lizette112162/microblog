@@ -2,6 +2,7 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 # microsft translation service
+# -*- coding: utf-8 -*-
 
 WTF_CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
@@ -30,7 +31,6 @@ POSTS_PER_PAGE = 3
 MAX_SEARCH_RESULTS = 50
 
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 # ...
 # available languages
 LANGUAGES = {
