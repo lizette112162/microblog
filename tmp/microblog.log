@@ -296,3 +296,4 @@ TemplateAssertionError: block 'content' defined twice
 2015-12-10 19:40:14,508 INFO: microblog startup [in /Users/betty/Desktop/microblog/app/__init__.py:41]
 2015-12-10 19:48:07,329 INFO: microblog startup [in /Users/betty/Desktop/microblog/app/__init__.py:41]
 2015-12-10 19:48:08,152 INFO: microblog startup [in /Users/betty/Desktop/microblog/app/__init__.py:41]
+2015-12-13 10:08:34,053 INFO: microblog startup [in /Users/betty/Desktop/microblog/app/__init__.py:41]
