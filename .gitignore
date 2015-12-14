@@ -1,4 +1,4 @@
 flask/
 *.pyc
-tmp/
+
 .DS_Store
