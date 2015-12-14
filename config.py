@@ -19,12 +19,12 @@ SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 WHOOSH_BASE = os.path.join(basedir, 'search.db')
 
 # email server
-MAIL_SERVER = 'localhost'
-MAIL_PORT =  25
-MAIL_USERNAME = None
-MAIL_PASSWORD = None
+MAIL_SERVER = os.environ.get('MAIL_SERVER', 'localhost')
+MAIL_PORT = os.environ.get('MAIL_PORT', 465)
+MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 # administrator list
-ADMINS = ['you@example.com']
+ADMINS = os.environ.get('ADMINS', '').split(',')
 
 # pagination
 POSTS_PER_PAGE = 3
