@@ -23,6 +23,7 @@ MAIL_SERVER = os.environ.get('MAIL_SERVER', 'localhost')
 MAIL_PORT = os.environ.get('MAIL_PORT', 465)
 MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
 MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+MAIL_USE_SSL = True
 # administrator list
 ADMINS = os.environ.get('ADMINS', '').split(',')
 
